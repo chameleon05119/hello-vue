@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
-const imgAttributes = ref({
-  src: '/images/logo.svg',
-  alt: 'Vueのロゴ',
-  width: 75,
-  height: 75
-})
+const bgColor = ref('white')
+const onChengeColor = (color: string): void => {
+  bgColor.value = color
+}
 </script>
-
 <template>
-  <img v-bind="imgAttributes" />
+  <p v-on:click="onChengeColor('red')" :style="{ backgroundColor: bgColor }">
+    クリックすると背景が赤色に変わります
+  </p>
 </template>
