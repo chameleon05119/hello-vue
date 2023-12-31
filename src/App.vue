@@ -1,23 +1,14 @@
 <script setup lang="ts">
-import { reactive, computed } from 'vue'
+import { ref } from 'vue'
 
-// リアクティブな円周率と半径のテンプレート変数をまとめて用意
-const data = reactive({
-  PI: 3.14,
-  radius: Math.round(Math.random() * 10)
+const imgAttributes = ref({
+  src: '/images/logo.svg',
+  alt: 'Vueのロゴ',
+  width: 75,
+  height: 75
 })
-
-// 円の面積の算術プロパティを用意
-const area = computed((): number => {
-  return data.radius * data.radius * data.PI
-})
-
-// 半径のテンプレート変数に新しい乱数を1秒ごとに格納
-setInterval((): void => {
-  data.radius = Math.round(Math.random() * 10)
-}, 1000)
 </script>
 
 <template>
-  <p>半径{{ data.radius }}の円の面積を円周率{{ data.PI }}で計算すると：{{ area }}</p>
+  <img v-bind="imgAttributes" />
 </template>
