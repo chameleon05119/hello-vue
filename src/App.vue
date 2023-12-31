@@ -1,25 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-// 時刻の初期化
-const now = new Date()
-const nowStr = now.toLocaleTimeString()
-let timeStr = nowStr
-const timeStrRef = ref(nowStr)
+// 半径の初期値を乱数で取得
+const radiusInit = Math.round(Math.random() * 10)
+// 円周率のテンプレート変数を用意
+const PI = ref(3.14)
+// 半径のテンプレート変数を用意
+const radius = ref(radiusInit)
 
-// 新しい時刻に変換する関数
-function changeTime(): void {
-  const newTime = new Date()
-  const newTimeStr = newTime.toLocaleTimeString()
-  timeStr = newTimeStr
-  timeStrRef.value = newTimeStr
-}
+// 円の面積の算術プロパティを用意
+const area = computed((): number => {
+  return radius.value * radius.value * PI.value
+})
 
-// 1秒ごとに実行
-setInterval(changeTime, 1000)
+// 半径のテンプレート変数に新しい乱数を1秒ごとに格納
+setInterval((): void => {
+  radius.value = Math.round(Math.random() * 10)
+}, 1000)
 </script>
 
 <template>
-  <p>現在時刻：{{ timeStr }}</p>
-  <p>現在時刻(ref)：{{ timeStrRef }}</p>
+  <p>半径{{ radius }}の円の面積を円周率{{ PI }}で計算すると：{{ area }}</p>
 </template>
