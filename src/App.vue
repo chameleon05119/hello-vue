@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const htmlStr = ref(`<a href="https://vuejs.org//">VueのTOPページ</a>`)
+const mapObj = new Map<number, string>()
+mapObj.set(1, 'りんご')
+mapObj.set(2, 'みかん')
+mapObj.set(3, 'ブドウ')
 </script>
 <template>
-  <section>{{ htmlStr }}</section>
-  <section v-html="htmlStr"></section>
+  <ul>
+    <li v-for="[id, name] in mapObj" :key="`map-obj-${id}`">
+      IDが{{ id }}の果物は{{ name }}です。
+    </li>
+  </ul>
 </template>
