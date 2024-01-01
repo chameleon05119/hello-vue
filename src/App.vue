@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-const bgColor = ref('white')
-const onChengeColor = (color: string): void => {
-  bgColor.value = color
-}
+const isAgreed = ref(false)
 </script>
 <template>
-  <p v-on:click="onChengeColor('red')" :style="{ backgroundColor: bgColor }">
-    クリックすると背景が赤色に変わります
-  </p>
+  <label>
+    <input type="checkbox" v-model="isAgreed" />
+    同意する
+  </label>
+  <p>結果: {{ isAgreed }}</p>
 </template>
