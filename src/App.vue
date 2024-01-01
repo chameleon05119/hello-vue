@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-const isAgreed = ref(false)
+const htmlStr = ref(`<a href="https://vuejs.org//">VueのTOPページ</a>`)
 </script>
 <template>
-  <label>
-    <input type="checkbox" v-model="isAgreed" />
-    同意する
-  </label>
-  <p>結果: {{ isAgreed }}</p>
+  <section>{{ htmlStr }}</section>
+  <section v-html="htmlStr"></section>
 </template>
