@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { ref, watch, watchEffect } from 'vue'
-
-const obj = ref({
-  id: 1,
-  name: 'りんご',
-  quantity: 0
-})
-watch(
-  () => obj.value.quantity,
-  (quantity) => {
-    console.log('quantity: ', quantity)
-  }
-)
-watchEffect(() => {
-  console.log('watchEffect: ', obj.value.quantity)
-})
-
-setInterval(() => {
-  obj.value.quantity++
-}, 1000)
+import OnceSection from '@/components/OnceSection.vue'
 </script>
+
+<template>
+  <h1>コンポーネント基礎</h1>
+  <section>
+    <h2>コンポーネント1個</h2>
+    <OnceSection />
+  </section>
+  <section>
+    <h2>コンポーネントが複数</h2>
+    <OnceSection />
+    <OnceSection />
+    <OnceSection />
+  </section>
+</template>
