@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import OnceInfo from '@/components/OneInfo.vue'
-const propsContent = ref('子コンポーネントにデータを渡すにはPropsを利用する。')
+import OnceSection from '@/components/OnceSection.vue'
+
+const randInt = Math.round(Math.random() * 10)
+const rand = ref(randInt)
+const onCreateNewRand = (): void => {
+  rand.value = Math.round(Math.random() * 10)
+}
 </script>
 
 <template>
-  <h1>Props基礎</h1>
   <section>
-    <OnceInfo title="Propsの利用" :content="propsContent" />
+    <p>親コンポーネントで乱数を表示：{{ rand }}</p>
+    <OnceSection :rand="rand" @created-new-rand="onCreateNewRand" />
   </section>
 </template>
 

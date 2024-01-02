@@ -1,11 +1,28 @@
+<script setup lang="ts">
+interface Props {
+  rand: number
+}
+
+interface Emits {
+  (event: 'createdNewRand'): void
+}
+
+defineProps<Props>()
+const emit = defineEmits<Emits>()
+
+const onNewRandButtonClink = (): void => {
+  emit('createdNewRand')
+}
+</script>
+
 <template>
   <section class="box">
-    <h4>一つのコンポーネント</h4>
-    <p>コンポーネントとは、サイト内で共通な要素を1個の部品として再利用可能にしたものです。</p>
+    <p>子コンポーネントで乱数を表示：{{ rand }}</p>
+    <button @click="onNewRandButtonClink">新たな乱数を生成</button>
   </section>
 </template>
 
-<style>
+<style scoped>
 .box {
   border: green 1px dashed;
   margin: 10px;
