@@ -1,13 +1,22 @@
 <script setup lang="ts">
-const mapObj = new Map<number, string>()
-mapObj.set(1, 'りんご')
-mapObj.set(2, 'みかん')
-mapObj.set(3, 'ブドウ')
+import { ref, watch, watchEffect } from 'vue'
+
+const obj = ref({
+  id: 1,
+  name: 'りんご',
+  quantity: 0
+})
+watch(
+  () => obj.value.quantity,
+  (quantity) => {
+    console.log('quantity: ', quantity)
+  }
+)
+watchEffect(() => {
+  console.log('watchEffect: ', obj.value.quantity)
+})
+
+setInterval(() => {
+  obj.value.quantity++
+}, 1000)
 </script>
-<template>
-  <ul>
-    <li v-for="[id, name] in mapObj" :key="`map-obj-${id}`">
-      IDが{{ id }}の果物は{{ name }}です。
-    </li>
-  </ul>
-</template>
