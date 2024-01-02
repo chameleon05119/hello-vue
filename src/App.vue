@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import WithModel from './components/WithModel.vue'
+import { ref } from 'vue'
+import OnceInfo from '@/components/OneInfo.vue'
+const propsContent = ref('子コンポーネントにデータを渡すにはPropsを利用する。')
 </script>
 
 <template>
-  <h1>コンポーネントの独立性</h1>
+  <h1>Props基礎</h1>
   <section>
-    <WithModel />
-    <WithModel />
+    <OnceInfo title="Propsの利用" :content="propsContent" />
   </section>
 </template>
+
+<style>
+section {
+  border: blue 1px solid;
+  margin: 10px;
+}
+</style>
