@@ -2,7 +2,9 @@
 import { ref } from 'vue'
 import OnceSection from './components/OnceSection.vue'
 
+const taroProblemslist: string[] = ['電話が通じません。', '留守です。']
 const taro = ref('田中太郎')
+const taroProblems = ref(taroProblemslist)
 const jiro = ref('鈴木二郎')
 </script>
 
@@ -10,7 +12,11 @@ const jiro = ref('鈴木二郎')
   <section>
     <h2>Slotの利用</h2>
     <OnceSection :name="taro">
-      <p>連絡がつきません。</p>
+      <ul>
+        <li v-for="problem in taroProblemslist" :key="problem">
+          {{ problem }}
+        </li>
+      </ul>
     </OnceSection>
     <OnceSection :name="jiro" />
   </section>
