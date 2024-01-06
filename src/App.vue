@@ -12,11 +12,16 @@ const jiro = ref('鈴木二郎')
   <section>
     <h2>Slotの利用</h2>
     <OnceSection :name="taro">
-      <ul>
-        <li v-for="problem in taroProblemslist" :key="problem">
-          {{ problem }}
-        </li>
-      </ul>
+      <template v-slot:default>
+        <p>問題発生</p>
+      </template>
+      <template v-slot:detail>
+        <ul>
+          <li v-for="problem in taroProblemslist" :key="problem">
+            {{ problem }}
+          </li>
+        </ul>
+      </template>
     </OnceSection>
     <OnceSection :name="jiro" />
   </section>

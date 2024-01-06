@@ -11,6 +11,10 @@ defineProps<Props>()
     <slot>
       <p>問題ありません。</p>
     </slot>
+    <h4>詳細内容</h4>
+    <slot name="detail">
+      <p>特にありません。</p>
+    </slot>
   </section>
 </template>
 
